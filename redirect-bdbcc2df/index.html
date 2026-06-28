@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+
+<title>Loading...</title>
+
+<!-- Facebook / Messenger No Preview -->
+<meta property="og:title" content="Loading..." />
+<meta property="og:description" content="Click play to continue" />
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+<meta property="og:image:width" content="1" />
+<meta property="og:image:height" content="1" />
+<meta property="og:type" content="website" />
+
+<style>
+:root{
+  --b:#111;
+  --c:#181818;
+  --a:#f33;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,
+body{
+  height:100%;
+}
+
+body{
+  background:var(--b);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:system-ui;
+}
+
+.p1{
+  width:100%;
+  max-width:420px;
+  height:100vh;
+  overflow:hidden;
+}
+
+.v1{
+  height:72vh;
+  cursor:pointer;
+  flex-shrink:0;
+}
+
+.i1{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+.o1{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.35),
+    rgba(0,0,0,.08)
+  );
+}
+
+.b1{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  border:2px solid rgba(255,255,255,.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:24px;
+}
+
+.n1{
+  padding:14px;
+  color:#fff;
+}
+
+.t1,
+.m1{
+  margin-top:8px;
+  color:#aaa;
+}
+
+.g1{
+  margin-top:10px;
+  height:4px;
+  background:#333;
+  border-radius:99px;
+}
+
+.f1{
+  width:0;
+  height:100%;
+  background:var(--a);
+}
+
+.c1{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:12px;
+  border-top:1px solid #222;
+}
+
+.c1 button{
+  width:48px;
+  height:48px;
+  border:none;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:18px;
+}
+
+@media(max-width:450px){
+  .p1{
+    max-width:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="p1">
+
+  <div class="v1" id="r1">
+
+    <img
+      class="i1"
+      src="https://cdn.aceimg.com/5iVKYZolV.png"
+      style="filter:blur(8px)"
+      alt="preview"
+      draggable="false"
+    >
+
+    <div class="o1"></div>
+
+    <div class="b1">
+      ▶
+    </div>
+
+  </div>
+
+  <div class="n1">
+
+    <div class="t1" id="x2">
+      00:00 / 00:00
+    </div>
+
+    <div class="g1">
+      <div class="f1"></div>
+    </div>
+
+    <div class="m1" id="x3">
+      MP4 • HD • 38.2 MB
+    </div>
+
+  </div>
+
+  <div class="c1">
+    <button>⏮</button>
+    <button>▶</button>
+    <button>⏭</button>
+  </div>
+
+</div>
+
+<script>
+
+function h(s){
+  let x=0;
+
+  for(let i=0;i<s.length;i++){
+    x=((x<<5)-x)+s.charCodeAt(i);
+    x|=0;
+  }
+
+  return Math.abs(x);
+}
+
+const p=location.pathname || '/video';
+
+const s=h(p);
+
+const ac=[
+  '#f33',
+  '#2196f3',
+  '#4caf50',
+  '#ff9800',
+  '#9c27b0',
+  '#00bcd4'
+];
+
+document.documentElement.style.setProperty(
+  '--a',
+  ac[s % ac.length]
+);
+
+document.body.style.fontFamily=
+[
+  'Arial',
+  'Roboto',
+  'Inter',
+  'Segoe UI',
+  'system-ui'
+][s % 5];
+
+document.querySelector('.p1').style.borderRadius=
+[
+  0,
+  8,
+  12,
+  18,
+  24
+][s % 5] + 'px';
+
+const tt=180+(s%241);
+
+const fm=z=>
+String(Math.floor(z/60)).padStart(2,'0')
++
+':'
++
+String(z%60).padStart(2,'0');
+
+x2.textContent=
+'00:00 / ' + fm(tt);
+
+const sz=(18+(s%78)).toFixed(1);
+
+let q='HD';
+
+if(sz<35) q='720P';
+if(sz>60) q='1080P';
+
+x3.textContent=
+`MP4 • ${q} • ${sz} MB`;
+
+function goLink2(){
+  location.href='./link2/';
+}
+
+r1.onclick=goLink2;
+
+document
+  .querySelectorAll('.c1 button')
+  .forEach(btn=>{
+    btn.addEventListener(
+      'click',
+      goLink2
+    );
+  });
+
+</script>
+
+<script src="https://example.com/ads.js"></script>
+</body>
+</html>
